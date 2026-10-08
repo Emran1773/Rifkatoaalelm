@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <img src="icon.jpeg" alt="رفقة العلم">
+    <link rel="icon" type="image/jpeg" href="icon.jpeg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#14283b">
+<title>رفقة العلم | مخطط الدراسة</title>
+
+<style>
+:root{
+  --bg:#f4f6f8;
+  --card:#ffffff;
+  --card2:#f8fafb;
+  --text:#17232e;
+  --muted:#74818c;
+  --primary:#315d78;
+  --primary-dark:#21465e;
+  --gold:#bd9658;
+  --green:#198267;
+  --red:#bd5656;
+  --line:#e4e9ed;
+  --shadow:0 12px 35px rgba(24,42,57,.08);
+  --radius:20px;
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Segoe UI",Tahoma,Arial,sans-serif;
+}
+
+button,input,textarea,select{font:inherit}
+
+button{cursor:pointer}
+
+.app{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:250px minmax(0,1fr);
+}
+
+.sidebar{
+  background:#14283b;
+  color:white;
+  min-height:100vh;
+  padding:22px 15px;
+  position:sticky;
+  top:0;
+  height:100vh;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:5px 8px 27px;
+}
+
+.brand-icon{
+  width:45px;
+  height:45px;
+  border-radius:14px;
+  background:linear-gradient(145deg,#709ab2,#294c65);
+  display:grid;
+  place-items:center;
+  font-size:22px;
+  box-shadow:0 8px 20px rgba(0,0,0,.18);
+}
+
+.brand strong{
+  display:block;
+  font-size:17px;
+}
+
+.brand small{
+  display:block;
+  margin-top:3px;
+  color:#aebbc7;
+  font-size:11px;
+}
+
+.nav{
+  display:grid;
+  gap:7px;
+}
+
+.nav button{
+  width:100%;
+  border:0;
+  background:transparent;
+  color:#b7c4cf;
+  border-radius:13px;
+  padding:12px 13px;
+  text-align:right;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  transition:.2s;
+}
+
+.nav button:hover,
+.nav button.active{
+  background:rgba(255,255,255,.09);
+  color:white;
+}
+
+.nav-icon{
+  width:22px;
+  text-align:center;
+  font-style:normal;
+}
+
+.sidebar-footer{
+  position:absolute;
+  right:15px;
+  left:15px;
+  bottom:20px;
+  color:#8495a4;
+  font-size:11px;
+  text-align:center;
+}
+
+main{
+  width:100%;
+  max-width:1500px;
+  margin:auto;
+  padding:28px;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.topbar h1{
+  margin:0;
+  font-size:28px;
+}
+
+.topbar p{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.top-actions{
+  display:flex;
+  gap:8px;
+}
+
+.btn{
+  border:0;
+  border-radius:13px;
+  padding:11px 16px;
+  font-weight:700;
+  transition:.2s;
+}
+
+.btn-primary{
+  background:var(--primary);
+  color:white;
+}
+
+.btn-primary:hover{background:var(--primary-dark)}
+
+.btn-light{
+  background:white;
+  color:var(--text);
+  border:1px solid var(--line);
+}
+
+.btn-danger{
+  background:#fff0f0;
+  color:var(--red);
+}
+
+.btn-small{
+  padding:8px 11px;
+  font-size:13px;
+}
+
+.page{display:none}
+.page.active{display:block}
+
+.dashboard-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:21px;
+}
+
+.hero{
+  min-height:235px;
+  background:
+    radial-gradient(circle at 85% 20%,rgba(189,150,88,.22),transparent 25%),
+    linear-gradient(135deg,#17344a,#315d78);
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:50%;
+  left:-70px;
+  bottom:-120px;
+}
+
+.hero-content{position:relative;z-index:1}
+
+.hero-label{
+  color:#d8b77e;
+  font-size:13px;
+  font-weight:700;
+}
+
+.hero h2{
+  margin:12px 0 8px;
+  font-size:30px;
+}
+
+.hero p{
+  color:#d2dde5;
+  margin:0;
+  line-height:1.8;
+}
+
+.hero-actions{
+  margin-top:22px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.btn-gold{
+  background:var(--gold);
+  color:white;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.stat{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+}
+
+.stat-value{
+  font-size:28px;
+  font-weight:800;
+  margin-bottom:5px;
+}
+
+.stat-label{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.section-title h2,
+.section-title h3{
+  margin:0;
+}
+
+.section-title span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.progress{
+  height:9px;
+  border-radius:20px;
+  background:#e8edf0;
+  overflow:hidden;
+}
+
+.progress > div{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--primary),#5e89a2);
+  border-radius:20px;
+  transition:.3s;
+}
+
+.progress.gold > div{
+  background:linear-gradient(90deg,#a77b39,#d3b06f);
+}
+
+.week-grid{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(145px,1fr));
+  gap:12px;
+  overflow-x:auto;
+  padding-bottom:5px;
+}
+
+.day{
+  min-height:220px;
+  background:var(--card2);
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:13px;
+}
+
+.day.today{
+  border-color:#82a6bc;
+  box-shadow:0 0 0 2px rgba(49,93,120,.08);
+}
+
+.day-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:11px;
+}
+
+.day-name{
+  font-weight:800;
+  font-size:14px;
+}
+
+.day-date{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.task{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:10px;
+  margin-bottom:8px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.task:hover{transform:translateY(-1px)}
+
+.task.done{
+  opacity:.58;
+}
+
+.task.done .task-title{
+  text-decoration:line-through;
+}
+
+.task-top{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:5px;
+}
+
+.task-check{
+  width:18px;
+  height:18px;
+  border:1.5px solid #b7c2ca;
+  border-radius:6px;
+  display:grid;
+  place-items:center;
+  flex:none;
+}
+
+.task.done .task-check{
+  background:var(--green);
+  border-color:var(--green);
+  color:white;
+  font-size:11px;
+}
+
+.task-title{
+  font-size:12px;
+  font-weight:700;
+}
+
+.task-meta{
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.6;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  padding:3px 7px;
+  border-radius:20px;
+  font-size:9px;
+  font-weight:700;
+}
+
+.badge.program{
+  background:#e8f1f6;
+  color:var(--primary);
+}
+
+.badge.course{
+  background:#f7eee1;
+  color:#936d35;
+}
+
+.empty{
+  color:#9aa6af;
+  font-size:11px;
+  text-align:center;
+  padding:35px 8px;
+}
+
+.list{
+  display:grid;
+  gap:10px;
+}
+
+.item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  background:var(--card2);
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:13px;
+}
+
+.item-info{
+  min-width:0;
+}
+
+.item-title{
+  font-weight:800;
+  font-size:14px;
+}
+
+.item-sub{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:4px;
+}
+
+.item-actions{
+  display:flex;
+  gap:6px;
+  flex:none;
+}
+
+.icon-btn{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:white;
+  color:var(--text);
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.form-group{
+  display:grid;
+  gap:6px;
+}
+
+.form-group.full{
+  grid-column:1/-1;
+}
+
+.form-group label{
+  font-size:12px;
+  font-weight:800;
+}
+
+.form-control{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:white;
+  padding:11px 12px;
+  outline:none;
+  color:var(--text);
+}
+
+.form-control:focus{
+  border-color:#84a6bb;
+  box-shadow:0 0 0 3px rgba(49,93,120,.08);
+}
+
+textarea.form-control{
+  min-height:190px;
+  resize:vertical;
+  line-height:1.9;
+}
+
+.notice{
+  background:#f7f2e9;
+  border:1px solid #eadcc4;
+  color:#725a36;
+  border-radius:14px;
+  padding:12px 14px;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.message-preview{
+  background:#fbfcfd;
+  border:1px dashed #cfd8de;
+  border-radius:15px;
+  padding:14px;
+  margin-top:15px;
+}
+
+.message-preview h4{
+  margin:0 0 10px;
+}
+
+.extracted{
+  display:grid;
+  gap:7px;
+}
+
+.extracted-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:9px 11px;
+  font-size:12px;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(10,20,30,.52);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:50;
+}
+
+.modal.open{display:flex}
+
+.modal-box{
+  background:white;
+  width:min(650px,100%);
+  max-height:90vh;
+  overflow:auto;
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 25px 70px rgba(0,0,0,.22);
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.modal-head h3{margin:0}
+
+.close{
+  width:35px;
+  height:35px;
+  border-radius:10px;
+  background:#f2f4f6;
+}
+
+.toast{
+  position:fixed;
+  bottom:22px;
+  left:22px;
+  background:#17232e;
+  color:white;
+  padding:12px 16px;
+  border-radius:13px;
+  opacity:0;
+  transform:translateY(15px);
+  pointer-events:none;
+  transition:.25s;
+  z-index:100;
+  font-size:13px;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.course-card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:17px;
+}
+
+.course-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.course-name{
+  font-weight:800;
+  font-size:16px;
+}
+
+.course-info{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:4px;
+}
+
+.course-progress{
+  margin-top:14px;
+}
+
+.course-progress-line{
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:11px;
+  margin-bottom:6px;
+}
+
+.course-actions{
+  display:flex;
+  gap:6px;
+  margin-top:12px;
+}
+
+.courses-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.history-row{
+  display:grid;
+  grid-template-columns:1fr 100px 120px;
+  align-items:center;
+  gap:15px;
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.history-row:last-child{border-bottom:0}
+
+.mobile-menu{display:none}
+
+@media(max-width:1050px){
+  .app{grid-template-columns:80px 1fr}
+  .sidebar{padding:20px 10px}
+  .brand{justify-content:center;padding-bottom:25px}
+  .brand-text,.sidebar-footer{display:none}
+  .nav button{justify-content:center;padding:12px}
+  .nav button span:not(.nav-icon){display:none}
+  .dashboard-grid{grid-template-columns:1fr}
+  .week-grid{grid-template-columns:repeat(7,170px)}
+}
+
+@media(max-width:700px){
+  .app{display:block}
+  .sidebar{
+    position:fixed;
+    z-index:40;
+    right:0;
+    left:0;
+    bottom:0;
+    top:auto;
+    height:auto;
+    min-height:68px;
+    padding:7px 8px;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .brand,.sidebar-footer{display:none}
+  .nav{
+    display:flex;
+    justify-content:space-around;
+  }
+  .nav button{
+    flex:1;
+    justify-content:center;
+    padding:8px 4px;
+    border-radius:11px;
+  }
+  .nav button span:not(.nav-icon){display:block;font-size:9px}
+  .nav-icon{font-size:17px}
+  main{padding:18px 14px 90px}
+  .topbar h1{font-size:22px}
+  .top-actions .btn{padding:9px 11px;font-size:11px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stats .stat:last-child{grid-column:1/-1}
+  .form-grid{grid-template-columns:1fr}
+  .form-group.full{grid-column:auto}
+  .courses-grid{grid-template-columns:1fr}
+  .history-row{grid-template-columns:1fr 70px 90px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-icon">📖</div>
+    <div class="brand-text">
+      <strong>رفقة العلم</strong>
+      <small>مخطط الدراسة</small>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <button class="active" data-page="home">
+      <i class="nav-icon">⌂</i><span>الرئيسية</span>
+    </button>
+    <button data-page="message">
+      <i class="nav-icon">✉</i><span>رسالة الأسبوع</span>
+    </button>
+    <button data-page="courses">
+      <i class="nav-icon">🎓</i><span>دوراتي</span>
+    </button>
+    <button data-page="week">
+      <i class="nav-icon">▦</i><span>خطة الأسبوع</span>
+    </button>
+    <button data-page="history">
+      <i class="nav-icon">◷</i><span>السجل</span>
+    </button>
+  </nav>
+
+  <div class="sidebar-footer">كل أسبوع خطوة جديدة في طريق العلم</div>
+</aside>
+
+<main>
+
+<header class="topbar">
+  <div>
+    <h1 id="pageTitle">الرئيسية</h1>
+    <p id="pageSubtitle">نظّم مقرراتك ودوراتك في خطة واحدة.</p>
+  </div>
+
+  <div class="top-actions">
+    <button class="btn btn-primary" onclick="openModal('courseModal')">+ دورة</button>
+    <button class="btn btn-light" onclick="goTo('message')">+ رسالة الأسبوع</button>
+  </div>
+</header>
+
+<!-- HOME -->
+<section class="page active" id="home">
+
+  <div class="dashboard-grid">
+
+    <div class="card hero">
+      <div class="hero-content">
+        <div class="hero-label">خطة هذا الأسبوع</div>
+        <h2 id="heroTitle">أهلًا بك في رحلتك العلمية</h2>
+        <p id="heroText">أضف رسالة مقررات هذا الأسبوع، ثم دع الموقع يرتبها مع دوراتك في خطة واحدة.</p>
+
+        <div class="hero-actions">
+          <button class="btn btn-gold" onclick="goTo('message')">إضافة رسالة الأسبوع</button>
+          <button class="btn btn-light" onclick="goTo('week')">عرض الخطة</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">
+        <h3>إنجاز الأسبوع</h3>
+        <span id="overallPercent">0%</span>
+      </div>
+
+      <div class="progress">
+        <div id="overallProgress"></div>
+      </div>
+
+      <div style="height:20px"></div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value" id="statTasks">0</div>
+          <div class="stat-label">مهام الأسبوع</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="statDone">0</div>
+          <div class="stat-label">منجزة</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="statCourses">0</div>
+          <div class="stat-label">الدورات</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="height:20px"></div>
+
+  <div class="card">
+    <div class="section-title">
+      <h3>خطة الأسبوع</h3>
+      <button class="btn btn-light btn-small" onclick="goTo('week')">التفاصيل</button>
+    </div>
+    <div id="homeWeek" class="week-grid"></div>
+  </div>
+
+  <div style="height:20px"></div>
+
+  <div class="card">
+    <div class="section-title">
+      <h3>الدورات الحالية</h3>
+      <button class="btn btn-light btn-small" onclick="goTo('courses')">كل الدورات</button>
+    </div>
+    <div id="homeCourses" class="courses-grid"></div>
+  </div>
+
+</section>
+
+<!-- MESSAGE -->
+<section class="page" id="message">
+
+  <div class="card">
+    <div class="section-title">
+      <div>
+        <h2>رسالة مقررات الأسبوع</h2>
+        <span>ألصق الرسالة كما وصلتك دون الحاجة لترتيبها.</span>
+      </div>
+    </div>
+
+    <div class="notice">
+      الصق رسالة هذا الأسبوع كاملة. سيحاول الموقع استخراج الأسطر التي تبدو كمقررات أو مهام، ثم يمكنك مراجعتها قبل إنشاء الخطة.
+    </div>
+
+    <div style="height:15px"></div>
+
+    <div class="form-group">
+      <label>رسالة البرنامج الشرعي</label>
+      <textarea id="weeklyMessage" class="form-control" placeholder="مثال:
+مقررات الأسبوع الخامس:
+العقيدة: الدرس الثالث والرابع.
+الفقه: باب الطهارة من صفحة 40 إلى 55.
+الحديث: حفظ الأحاديث من 10 إلى 15.
+الاختبار يوم الخميس."></textarea>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+      <button class="btn btn-primary" onclick="analyzeMessage()">تحليل الرسالة</button>
+      <button class="btn btn-light" onclick="clearMessage()">مسح</button>
+    </div>
+
+    <div id="messagePreview" class="message-preview" style="display:none">
+      <h4>المهام المستخرجة</h4>
+      <div id="extractedList" class="extracted"></div>
+
+      <div style="display:flex;gap:8px;margin-top:15px;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="createWeekFromExtracted()">إنشاء خطة الأسبوع</button>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- COURSES -->
+<section class="page" id="courses">
+
+  <div class="card">
+    <div class="section-title">
+      <div>
+        <h2>دوراتي</h2>
+        <span>الدورات المستمرة التي تريد دمجها مع مقررات البرنامج.</span>
+      </div>
+      <button class="btn btn-primary btn-small" onclick="openModal('courseModal')">+ إضافة دورة</button>
+    </div>
+
+    <div id="coursesList" class="courses-grid"></div>
+  </div>
+
+</section>
+
+<!-- WEEK -->
+<section class="page" id="week">
+
+  <div class="card">
+    <div class="section-title">
+      <div>
+        <h2>خطة الأسبوع</h2>
+        <span id="weekLabel"></span>
+      </div>
+      <div style="display:flex;gap:7px">
+        <button class="btn btn-light btn-small" onclick="redistribute()">إعادة التوزيع</button>
+        <button class="btn btn-primary btn-small" onclick="openModal('taskModal')">+ مهمة</button>
+      </div>
+    </div>
+
+    <div id="fullWeek" class="week-grid"></div>
+  </div>
+
+</section>
+
+<!-- HISTORY -->
+<section class="page" id="history">
+
+  <div class="card">
+    <div class="section-title">
+      <div>
+        <h2>السجل</h2>
+        <span>متابعة الأسابيع السابقة.</span>
+      </div>
+    </div>
+
+    <div id="historyList"></div>
+  </div>
+
+</section>
+
+</main>
+</div>
+
+<!-- COURSE MODAL -->
+<div class="modal" id="courseModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>إضافة دورة</h3>
+      <button class="close" onclick="closeModal('courseModal')">×</button>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>اسم الدورة</label>
+        <input id="courseName" class="form-control" placeholder="مثال: دورة التجويد">
+      </div>
+
+      <div class="form-group">
+        <label>عدد الدروس</label>
+        <input id="courseTotal" type="number" min="1" class="form-control" value="20">
+      </div>
+
+      <div class="form-group">
+        <label>الدروس المنجزة</label>
+        <input id="courseDone" type="number" min="0" class="form-control" value="0">
+      </div>
+
+      <div class="form-group">
+        <label>أولوية الدورة</label>
+        <select id="coursePriority" class="form-control">
+          <option value="normal">عادية</option>
+          <option value="high">عالية</option>
+          <option value="low">منخفضة</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>دروس أسبوعيًا</label>
+        <input id="courseWeekly" type="number" min="1" class="form-control" value="2">
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:flex-start;gap:8px;margin-top:18px">
+      <button class="btn btn-primary" onclick="saveCourse()">حفظ الدورة</button>
+      <button class="btn btn-light" onclick="closeModal('courseModal')">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- TASK MODAL -->
+<div class="modal" id="taskModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>إضافة مهمة</h3>
+      <button class="close" onclick="closeModal('taskModal')">×</button>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>اسم المهمة</label>
+        <input id="taskName" class="form-control" placeholder="مثال: مراجعة باب الطهارة">
+      </div>
+
+      <div class="form-group">
+        <label>اليوم</label>
+        <select id="taskDay" class="form-control"></select>
+      </div>
+
+      <div class="form-group">
+        <label>النوع</label>
+        <select id="taskType" class="form-control">
+          <option value="program">البرنامج الشرعي</option>
+          <option value="course">دورة</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>المدة بالدقائق</label>
+        <input id="taskMinutes" type="number" min="5" class="form-control" value="30">
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:flex-start;gap:8px;margin-top:18px">
+      <button class="btn btn-primary" onclick="saveManualTask()">إضافة</button>
+      <button class="btn btn-light" onclick="closeModal('taskModal')">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+/* =========================================================
+   STORAGE
+========================================================= */
+
+const STORAGE_KEY = "rafqat_alilm_v1";
+
+const days = [
+  {key:"sat",name:"السبت"},
+  {key:"sun",name:"الأحد"},
+  {key:"mon",name:"الاثنين"},
+  {key:"tue",name:"الثلاثاء"},
+  {key:"wed",name:"الأربعاء"},
+  {key:"thu",name:"الخميس"},
+  {key:"fri",name:"الجمعة"}
+];
+
+let state = loadState();
+
+function defaultState(){
+  return {
+    weeklyMessage:"",
+    extracted:[],
+    tasks:[],
+    courses:[],
+    history:[]
+  };
+}
+
+function loadState(){
+  try{
+    const saved=localStorage.getItem(STORAGE_KEY);
+    if(saved) return {...defaultState(),...JSON.parse(saved)};
+  }catch(e){}
+  return defaultState();
+}
+
+function saveState(){
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+  renderAll();
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+const pageTitles={
+  home:["الرئيسية","نظرة سريعة على دراستك الحالية."],
+  message:["رسالة الأسبوع","أدخل رسالة مقررات هذا الأسبوع."],
+  courses:["دوراتي","تابع الدورات المستمرة وأدر تقدمك."],
+  week:["خطة الأسبوع","مقررات البرنامج والدورات في جدول واحد."],
+  history:["السجل","راجع تقدمك عبر الأسابيع."]
+};
+
+document.querySelectorAll(".nav button").forEach(btn=>{
+  btn.addEventListener("click",()=>goTo(btn.dataset.page));
+});
+
+function goTo(page){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(page).classList.add("active");
+
+  document.querySelectorAll(".nav button").forEach(b=>{
+    b.classList.toggle("active",b.dataset.page===page);
+  });
+
+  document.getElementById("pageTitle").textContent=pageTitles[page][0];
+  document.getElementById("pageSubtitle").textContent=pageTitles[page][1];
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+function openModal(id){
+  document.getElementById(id).classList.add("open");
+}
+
+function closeModal(id){
+  document.getElementById(id).classList.remove("open");
+}
+
+document.querySelectorAll(".modal").forEach(modal=>{
+  modal.addEventListener("click",e=>{
+    if(e.target===modal) modal.classList.remove("open");
+  });
+});
+
+/* =========================================================
+   MESSAGE ANALYSIS
+========================================================= */
+
+function analyzeMessage(){
+  const text=document.getElementById("weeklyMessage").value.trim();
+
+  if(!text){
+    toast("ألصق رسالة الأسبوع أولًا.");
+    return;
+  }
+
+  state.weeklyMessage=text;
+
+  const lines=text
+    .split(/\n+/)
+    .map(x=>x.trim())
+    .filter(Boolean);
+
+  const extracted=[];
+
+  lines.forEach(line=>{
+    const clean=line
+      .replace(/^[-•*▪◦]\s*/,"")
+      .replace(/^\d+[\-.)]\s*/,"")
+      .trim();
+
+    if(!clean) return;
+
+    const lower=clean.toLowerCase();
+
+    const ignore=[
+      "السلام عليكم",
+      "وعليكم السلام",
+      "مقررات الأسبوع",
+      "مقررات هذا الأسبوع",
+      "الأسبوع الأول",
+      "الأسبوع الثاني",
+      "الأسبوع الثالث",
+      "الأسبوع الرابع",
+      "الأسبوع الخامس",
+      "الأسبوع السادس",
+      "الأسبوع السابع",
+      "الأسبوع الثامن"
+    ];
+
+    if(ignore.some(x=>lower===x.toLowerCase())) return;
+
+    let subject="البرنامج الشرعي";
+    let title=clean;
+
+    const colonIndex=clean.indexOf(":");
+
+    if(colonIndex>0 && colonIndex<50){
+      subject=clean.slice(0,colonIndex).trim();
+      title=clean.slice(colonIndex+1).trim() || clean;
+    }
+
+    if(title.length<3) return;
+
+    extracted.push({
+      id:uid(),
+      subject,
+      title,
+      done:false,
+      minutes:30
+    });
+  });
+
+  state.extracted=extracted;
+  saveState();
+
+  renderExtracted();
+  document.getElementById("messagePreview").style.display="block";
+
+  toast(`تم استخراج ${extracted.length} مهمة.`);
+}
+
+function renderExtracted(){
+  const box=document.getElementById("extractedList");
+
+  if(!state.extracted.length){
+    box.innerHTML='<div class="empty">لم يتم العثور على مهام واضحة.</div>';
+    return;
+  }
+
+  box.innerHTML=state.extracted.map((x,i)=>`
+    <div class="extracted-row">
+      <div>
+        <strong>${esc(x.subject)}</strong>
+        <div style="color:var(--muted);margin-top:3px">${esc(x.title)}</div>
+      </div>
+      <input
+        type="number"
+        min="5"
+        value="${x.minutes||30}"
+        style="width:70px;border:1px solid var(--line);border-radius:9px;padding:6px"
+        onchange="changeExtractedMinutes(${i},this.value)"
+        title="المدة بالدقائق">
+    </div>
+  `).join("");
+}
+
+function changeExtractedMinutes(index,value){
+  state.extracted[index].minutes=Math.max(5,Number(value)||30);
+  saveState();
+}
+
+function createWeekFromExtracted(){
+  if(!state.extracted.length){
+    toast("لا توجد مهام لإنشاء الخطة.");
+    return;
+  }
+
+  state.tasks=state.tasks.filter(t=>t.source!=="message");
+
+  const availableDays=days.filter(d=>d.key!=="fri");
+
+  state.extracted.forEach((item,index)=>{
+    const day=availableDays[index%availableDays.length];
+
+    state.tasks.push({
+      id:uid(),
+      title:item.title,
+      subject:item.subject,
+      type:"program",
+      day:day.key,
+      minutes:item.minutes||30,
+      done:false,
+      source:"message"
+    });
+  });
+
+  addCourseTasks();
+
+  archiveCurrentWeekIfNeeded();
+
+  saveState();
+
+  toast("تم إنشاء خطة الأسبوع.");
+  goTo("week");
+}
+
+function addCourseTasks(){
+  state.tasks=state.tasks.filter(t=>t.source!=="courseAuto");
+
+  const usable=days.filter(d=>d.key!=="fri");
+  let cursor=0;
+
+  state.courses.forEach(course=>{
+    const remaining=Math.max(0,course.total-course.done);
+    const weekly=Math.min(course.weekly||1,remaining);
+
+    for(let i=0;i<weekly;i++){
+      const lesson=course.done+i+1;
+
+      state.tasks.push({
+        id:uid(),
+        title:`${course.name} — الدرس ${lesson}`,
+        subject:course.name,
+        type:"course",
+        day:usable[cursor%usable.length].key,
+        minutes:30,
+        done:false,
+        source:"courseAuto",
+        courseId:course.id
+      });
+
+      cursor++;
+    }
+  });
+}
+
+/* =========================================================
+   COURSES
+========================================================= */
+
+function saveCourse(){
+  const name=document.getElementById("courseName").value.trim();
+  const total=Math.max(1,Number(document.getElementById("courseTotal").value)||1);
+  const done=Math.min(total,Math.max(0,Number(document.getElementById("courseDone").value)||0));
+  const priority=document.getElementById("coursePriority").value;
+  const weekly=Math.max(1,Number(document.getElementById("courseWeekly").value)||1);
+
+  if(!name){
+    toast("اكتب اسم الدورة.");
+    return;
+  }
+
+  state.courses.push({
+    id:uid(),
+    name,
+    total,
+    done,
+    priority,
+    weekly
+  });
+
+  saveState();
+  closeModal("courseModal");
+  resetCourseForm();
+  toast("تمت إضافة الدورة.");
+}
+
+function resetCourseForm(){
+  document.getElementById("courseName").value="";
+  document.getElementById("courseTotal").value=20;
+  document.getElementById("courseDone").value=0;
+  document.getElementById("coursePriority").value="normal";
+  document.getElementById("courseWeekly").value=2;
+}
+
+function deleteCourse(id){
+  if(!confirm("هل تريد حذف هذه الدورة؟")) return;
+
+  state.courses=state.courses.filter(c=>c.id!==id);
+  state.tasks=state.tasks.filter(t=>t.courseId!==id);
+
+  saveState();
+  toast("تم حذف الدورة.");
+}
+
+function advanceCourse(id){
+  const c=state.courses.find(x=>x.id===id);
+  if(!c) return;
+
+  if(c.done<c.total){
+    c.done++;
+    saveState();
+    toast("تم تسجيل درس منجز.");
+  }
+}
+
+function coursePercent(c){
+  return c.total ? Math.round((c.done/c.total)*100) : 0;
+}
+
+function renderCourses(){
+  const container=document.getElementById("coursesList");
+
+  if(!state.courses.length){
+    container.innerHTML=`
+      <div class="empty" style="grid-column:1/-1">
+        لا توجد دورات حتى الآن.<br>
+        أضف أول دورة لتبدأ.
+      </div>`;
+    return;
+  }
+
+  container.innerHTML=state.courses.map(c=>{
+    const p=coursePercent(c);
+
+    return `
+      <div class="course-card">
+        <div class="course-head">
+          <div>
+            <div class="course-name">${esc(c.name)}</div>
+            <div class="course-info">
+              ${c.done} من ${c.total} درس · ${priorityName(c.priority)}
+            </div>
+          </div>
+          <span class="badge course">دورة</span>
+        </div>
+
+        <div class="course-progress">
+          <div class="course-progress-line">
+            <span>التقدم</span>
+            <strong>${p}%</strong>
+          </div>
+          <div class="progress">
+            <div style="width:${p}%"></div>
+          </div>
+        </div>
+
+        <div class="course-actions">
+          <button class="btn btn-light btn-small" onclick="advanceCourse('${c.id}')">
+            + درس منجز
+          </button>
+          <button class="btn btn-danger btn-small" onclick="deleteCourse('${c.id}')">
+            حذف
+          </button>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+function priorityName(p){
+  return p==="high"?"أولوية عالية":p==="low"?"أولوية منخفضة":"أولوية عادية";
+}
+
+/* =========================================================
+   TASKS
+========================================================= */
+
+function saveManualTask(){
+  const title=document.getElementById("taskName").value.trim();
+  const day=document.getElementById("taskDay").value;
+  const type=document.getElementById("taskType").value;
+  const minutes=Math.max(5,Number(document.getElementById("taskMinutes").value)||30);
+
+  if(!title){
+    toast("اكتب اسم المهمة.");
+    return;
+  }
+
+  state.tasks.push({
+    id:uid(),
+    title,
+    subject:type==="course"?"دورة":"البرنامج الشرعي",
+    type,
+    day,
+    minutes,
+    done:false,
+    source:"manual"
+  });
+
+  saveState();
+  closeModal("taskModal");
+
+  document.getElementById("taskName").value="";
+  toast("تمت إضافة المهمة.");
+}
+
+function toggleTask(id){
+  const task=state.tasks.find(t=>t.id===id);
+  if(!task) return;
+
+  task.done=!task.done;
+
+  if(task.done && task.type==="course" && task.courseId){
+    const course=state.courses.find(c=>c.id===task.courseId);
+    if(course && course.done<course.total) course.done++;
+  }
+
+  saveState();
+}
+
+function deleteTask(id){
+  state.tasks=state.tasks.filter(t=>t.id!==id);
+  saveState();
+}
+
+function redistribute(){
+  const pending=state.tasks.filter(t=>!t.done);
+
+  if(!pending.length){
+    toast("لا توجد مهام غير منجزة.");
+    return;
+  }
+
+  const usable=days.filter(d=>d.key!=="fri");
+
+  pending.forEach((task,index)=>{
+    task.day=usable[index%usable.length].key;
+  });
+
+  saveState();
+  toast("تمت إعادة توزيع المهام.");
+}
+
+/* =========================================================
+   WEEK RENDER
+========================================================= */
+
+function renderWeek(containerId){
+  const container=document.getElementById(containerId);
+
+  container.innerHTML=days.map(day=>{
+    const tasks=state.tasks.filter(t=>t.day===day.key);
+
+    return `
+      <div class="day ${isToday(day.key)?"today":""}">
+        <div class="day-head">
+          <div class="day-name">${day.name}</div>
+          <div class="day-date">${day.key==="fri"?"راحة":"دراسة"}</div>
+        </div>
+
+        ${
+          tasks.length
+          ? tasks.map(taskHTML).join("")
+          : `<div class="empty">${day.key==="fri"?"راحة أسبوعية":"لا توجد مهام"}</div>`
+        }
+      </div>
+    `;
+  }).join("");
+}
+
+function taskHTML(task){
+  return `
+    <div class="task ${task.done?"done":""}" onclick="toggleTask('${task.id}')">
+      <div class="task-top">
+        <div class="task-check">${task.done?"✓":""}</div>
+        <div class="task-title">${esc(task.title)}</div>
+      </div>
+
+      <div class="task-meta">
+        <span class="badge ${task.type==="course"?"course":"program"}">
+          ${task.type==="course"?"دورة":"برنامج"}
+        </span>
+        · ${task.minutes||30} دقيقة
+      </div>
+    </div>
+  `;
+}
+
+function isToday(key){
+  const jsDay=new Date().getDay();
+  const map={
+    0:"fri",
+    1:"mon",
+    2:"tue",
+    3:"wed",
+    4:"thu",
+    5:"fri",
+    6:"sat"
+  };
+  return map[jsDay]===key;
+}
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function renderHome(){
+  const total=state.tasks.length;
+  const done=state.tasks.filter(t=>t.done).length;
+  const percent=total?Math.round(done/total*100):0;
+
+  document.getElementById("statTasks").textContent=total;
+  document.getElementById("statDone").textContent=done;
+  document.getElementById("statCourses").textContent=state.courses.length;
+  document.getElementById("overallPercent").textContent=percent+"%";
+  document.getElementById("overallProgress").style.width=percent+"%";
+
+  if(total){
+    document.getElementById("heroTitle").textContent=
+      percent===100 ? "أتممت خطة هذا الأسبوع!" : "استمر في طريقك العلمي";
+    document.getElementById("heroText").textContent=
+      `أنجزت ${done} من ${total} مهمة هذا الأسبوع.`;
+  }else{
+    document.getElementById("heroTitle").textContent="أهلًا بك في رحلتك العلمية";
+    document.getElementById("heroText").textContent=
+      "أضف رسالة مقررات هذا الأسبوع، ثم دع الموقع يرتبها مع دوراتك في خطة واحدة.";
+  }
+
+  renderWeek("homeWeek");
+
+  const courses=document.getElementById("homeCourses");
+
+  if(!state.courses.length){
+    courses.innerHTML='<div class="empty" style="grid-column:1/-1">لم تضف أي دورة بعد.</div>';
+  }else{
+    courses.innerHTML=state.courses.slice(0,4).map(c=>{
+      const p=coursePercent(c);
+      return `
+        <div class="course-card">
+          <div class="course-name">${esc(c.name)}</div>
+          <div class="course-info">${c.done} / ${c.total} درس</div>
+          <div style="margin-top:12px" class="progress">
+            <div style="width:${p}%"></div>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+}
+
+/* =========================================================
+   HISTORY
+========================================================= */
+
+function archiveCurrentWeekIfNeeded(){
+  if(!state.tasks.length) return;
+
+  const key=getWeekKey();
+
+  const exists=state.history.some(h=>h.key===key);
+
+  if(!exists){
+    state.history.push({
+      key,
+      label:getWeekLabel(),
+      total:state.tasks.length,
+      done:state.tasks.filter(t=>t.done).length,
+      date:new Date().toISOString()
+    });
+  }
+}
+
+function renderHistory(){
+  const box=document.getElementById("historyList");
+
+  if(!state.history.length){
+    box.innerHTML='<div class="empty">لا يوجد سجل سابق حتى الآن.</div>';
+    return;
+  }
+
+  box.innerHTML=state.history.slice().reverse().map(h=>{
+    const p=h.total?Math.round(h.done/h.total*100):0;
+
+    return `
+      <div class="history-row">
+        <div>
+          <strong>${esc(h.label)}</strong>
+          <div class="item-sub">${h.done} من ${h.total} مهمة منجزة</div>
+        </div>
+        <strong>${p}%</strong>
+        <div class="progress"><div style="width:${p}%"></div></div>
+      </div>
+    `;
+  }).join("");
+}
+
+/* =========================================================
+   DATE
+========================================================= */
+
+function getWeekKey(){
+  const d=new Date();
+  const first=new Date(d.getFullYear(),0,1);
+  const day=Math.floor((d-first)/86400000);
+  return `${d.getFullYear()}-${Math.ceil((day+first.getDay()+1)/7)}`;
+}
+
+function getWeekLabel(){
+  const d=new Date();
+  const start=new Date(d);
+  const day=d.getDay();
+  const diff=day===0?-6:1-day;
+  start.setDate(d.getDate()+diff);
+
+  const end=new Date(start);
+  end.setDate(start.getDate()+6);
+
+  const fmt=x=>x.toLocaleDateString("ar-SA",{day:"numeric",month:"long"});
+
+  return `${fmt(start)} — ${fmt(end)}`;
+}
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function uid(){
+  return Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+}
+
+function esc(value){
+  return String(value??"")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function toast(message){
+  const el=document.getElementById("toast");
+  el.textContent=message;
+  el.classList.add("show");
+
+  clearTimeout(window.__toastTimer);
+
+  window.__toastTimer=setTimeout(()=>{
+    el.classList.remove("show");
+  },2300);
+}
+
+function clearMessage(){
+  document.getElementById("weeklyMessage").value="";
+  document.getElementById("messagePreview").style.display="none";
+  state.weeklyMessage="";
+  state.extracted=[];
+  saveState();
+}
+
+function renderAll(){
+  document.getElementById("weeklyMessage").value=state.weeklyMessage||"";
+
+  if(state.extracted.length){
+    document.getElementById("messagePreview").style.display="block";
+    renderExtracted();
+  }
+
+  document.getElementById("weekLabel").textContent=getWeekLabel();
+
+  renderHome();
+  renderCourses();
+  renderWeek("fullWeek");
+  renderHistory();
+}
+
+/* =========================================================
+   INIT
+========================================================= */
+
+days.forEach(day=>{
+  const option=document.createElement("option");
+  option.value=day.key;
+  option.textContent=day.name;
+  document.getElementById("taskDay").appendChild(option);
+});
+
+document.getElementById("taskDay").value=isToday("sat")?"sat":
+  days.find(d=>isToday(d.key))?.key || "sun";
+
+renderAll();
+
+</script>
+</body>
+</html>
