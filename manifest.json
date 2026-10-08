@@ -1,0 +1,19 @@
+{
+  "name": "رفقة العلم",
+  "short_name": "رفقة العلم",
+  "description": "منصة تنظيم الدراسة والعلوم الشرعية",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#071A33",
+  "theme_color": "#071A33",
+  "icons": [
+    {
+      "src": "icon-192.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+    
+  ]
+}
