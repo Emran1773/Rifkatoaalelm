@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- أيقونة المفضلة للمتصفح (Favicon) -->
+<link rel="icon" href="icon.jpeg" type="image/jpeg">
+
+<!-- أيقونة أجهزة أبل/آيفون (Apple Touch Icon) -->
+<link rel="apple-touch-icon" href="icon.jpeg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنجاز — مخطط الإنجاز الأسبوعي الفاخر</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            950: '#031f18',
+                            900: '#062c22',
+                            800: '#0b3c30',
+                            700: '#114f40',
+                            600: '#176854'
+                        },
+                        gold: {
+                            300: '#fbe29d',
+                            400: '#f7d070',
+                            500: '#e5b342',
+                            600: '#c59227',
+                            700: '#9d7018'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+        
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: radial-gradient(circle at top, #093327 0%, #031410 100%);
+            color: #f1f5f9;
+            min-height: 100vh;
+        }
+
+        .gold-border {
+            border: 1px solid rgba(229, 179, 66, 0.25);
+        }
+
+        .gold-border-glow:focus-within, .gold-border-glow:focus {
+            border-color: rgba(229, 179, 66, 0.7);
+            box-shadow: 0 0 15px rgba(229, 179, 66, 0.2);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fff2d1 0%, #e5b342 50%, #b88319 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #f7d070 0%, #e5b342 50%, #c59227 100%);
+        }
+
+        .gold-button {
+            background: linear-gradient(135deg, #f7d070 0%, #e5b342 60%, #ba861d 100%);
+            color: #031f18;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .gold-button:hover {
+            background: linear-gradient(135deg, #fff2d1 0%, #f7d070 60%, #e5b342 100%);
+            box-shadow: 0 4px 20px rgba(229, 179, 66, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .card-dark {
+            background: rgba(6, 44, 34, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 179, 66, 0.18);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #031410;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #114f40;
+            border-radius: 4px;
+            border: 1px solid rgba(229, 179, 66, 0.2);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e5b342;
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            .card-dark {
+                background: white !important;
+                border: 1px solid #ccc !important;
+                color: black !important;
+                box-shadow: none !important;
+            }
+            .gold-gradient-text {
+                -webkit-text-fill-color: black !important;
+                color: black !important;
+            }
+            .text-gold-400, .text-gold-300, .text-emerald-300 {
+                color: #333 !important;
+            }
+        }
+    </style>
+</head>
+<body class="p-3 md:p-6 pb-12 antialiased">
+
+    <!-- Header Section -->
+    <header class="max-w-7xl mx-auto mb-8 text-center relative no-print">
+        <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full card-dark mb-3 text-gold-400 text-sm font-semibold border gold-border">
+            <i class="fa-solid font-star text-xs text-gold-500"></i>
+            <span>مخطط الإنجاز العلمي والدراسي الفاخر</span>
+            <i class="fa-solid font-star text-xs text-gold-500"></i>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-black gold-gradient-text tracking-wide mb-2">إنجاز — الخطّة الأسبوعية</h1>
+        <p class="text-emerald-200/80 text-sm md:text-base max-w-2xl mx-auto font-light">
+            منظومة تنظيم ورد القراءة والمدارسة الأسبوعية بدقة عالية وبدون تجزئة للمهام
+        </p>
+
+        <!-- Actions Bar -->
+        <div class="flex flex-wrap justify-center items-center gap-3 mt-6">
+            <button onclick="window.print()" class="gold-button px-5 py-2.5 rounded-xl flex items-center gap-2 text-sm shadow-lg">
+                <i class="fa-solid fa-print"></i>
+                <span>طباعة الخطة التفصيلية</span>
+            </button>
+            <button onclick="exportData()" class="px-4 py-2.5 rounded-xl card-dark text-emerald-200 hover:text-gold-300 hover:border-gold-500 transition text-sm flex items-center gap-2">
+                <i class="fa-solid fa-download"></i>
+                <span>تصدير نسخ نسخ احتياطي</span>
+            </button>
+            <button onclick="importDataTrigger()" class="px-4 py-2.5 rounded-xl card-dark text-emerald-200 hover:text-gold-300 hover:border-gold-500 transition text-sm flex items-center gap-2">
+                <i class="fa-solid fa-upload"></i>
+                <span>استرجاع البيانات</span>
+            </button>
+            <input type="file" id="importFile" class="hidden" accept=".json" onchange="importData(event)">
+            <button onclick="clearAllData()" class="px-4 py-2.5 rounded-xl card-dark text-red-400 hover:bg-red-950/40 border-red-900/50 transition text-sm flex items-center gap-2">
+                <i class="fa-solid fa-trash-can"></i>
+                <span>مسح الكل</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Left Column: Input Form & Bulk Parser (4 Cols) -->
+        <section class="lg:col-span-4 space-y-6 no-print">
+            
+            <!-- Quick Settings Card -->
+            <div class="card-dark p-5 rounded-2xl">
+                <h2 class="text-lg font-bold text-gold-400 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-gold-500"></i>
+                    <span>إعدادات السرعة والحساب</span>
+                </h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs text-emerald-200/80 mb-1.5 font-semibold">معدل قراءة الصفحة (بالدقائق):</label>
+                        <div class="flex items-center gap-2">
+                            <input type="number" id="readingPace" value="2" min="0.5" step="0.5" onchange="updatePace(this.value)" class="w-full bg-emerald-950/80 border gold-border rounded-xl px-3 py-2 text-gold-300 focus:outline-none text-sm">
+                            <span class="text-xs text-emerald-300 whitespace-nowrap">دقيقة / صفحة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smart Bulk Parser Card -->
+            <div class="card-dark p-5 rounded-2xl relative overflow-hidden">
+                <div class="absolute -left-10 -top-10 w-28 h-28 bg-gold-500/5 rounded-full blur-2xl"></div>
+                
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-lg font-bold text-gold-400 flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles text-gold-500"></i>
+                        <span>إدخال المهام دفعة واحدة</span>
+                    </h2>
+                    <span class="text-[10px] bg-gold-500/20 text-gold-300 border border-gold-500/30 px-2 py-0.5 rounded-full">ذكي ويدعم الأيام</span>
+                </div>
+                
+                <p class="text-xs text-emerald-200/70 mb-3 leading-relaxed">
+                    انسخ خطتك الأسبوعية مباشرة بنفس الصيغة (اليوم: اسم المقرر: من ص X إلى ص Y) وسيتم توزيعها بكتلتها الكاملة دون تجزئة:
+                </p>
+
+                <textarea id="bulkInput" rows="9" placeholder="الأحد: منحة العلام المجلد الرابع: من ص 463 إلى ص 474&#10;الاثنين: القواعد الفقهية: من ص 109 إلى ص 209&#10;الثلاثاء - تقريب مدارج السالكين: من ص 508 إلى ص 591" class="w-full bg-emerald-950/90 border gold-border gold-border-glow rounded-xl p-3 text-xs text-emerald-100 placeholder-emerald-700 focus:outline-none leading-relaxed font-mono resize-none mb-3"></textarea>
+
+                <div class="flex items-center gap-2">
+                    <button onclick="parseAndAddBulk()" class="gold-button w-full py-2.5 rounded-xl text-xs flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-plus-circle"></i>
+                        <span>تحليل وإضافة المهام للجدول</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Single Task Add Form -->
+            <div class="card-dark p-5 rounded-2xl">
+                <h2 class="text-lg font-bold text-gold-400 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square text-gold-500"></i>
+                    <span>إضافة مهمة منفردة</span>
+                </h2>
+
+                <form onsubmit="handleSingleAdd(event)" class="space-y-3">
+                    <div>
+                        <label class="block text-xs text-emerald-200/80 mb-1">اسم المقرر / الكتاب:</label>
+                        <input type="text" id="singleTitle" required placeholder="مثال: القواعد الفقهية" class="w-full bg-emerald-950/80 border gold-border rounded-xl px-3 py-2 text-xs text-emerald-100 focus:outline-none">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-xs text-emerald-200/80 mb-1">من صفحة:</label>
+                            <input type="number" id="singleStart" required min="1" placeholder="463" class="w-full bg-emerald-950/80 border gold-border rounded-xl px-3 py-2 text-xs text-emerald-100 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-emerald-200/80 mb-1">إلى صفحة:</label>
+                            <input type="number" id="singleEnd" required min="1" placeholder="474" class="w-full bg-emerald-950/80 border gold-border rounded-xl px-3 py-2 text-xs text-emerald-100 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-emerald-200/80 mb-1">اليوم المخصص:</label>
+                        <select id="singleDay" class="w-full bg-emerald-950/80 border gold-border rounded-xl px-3 py-2 text-xs text-gold-300 focus:outline-none">
+                            <option value="0">الأحد</option>
+                            <option value="1">الاثنين</option>
+                            <option value="2">الثلاثاء</option>
+                            <option value="3">الأربعاء</option>
+                            <option value="4">الخميس</option>
+                            <option value="5">الجمعة</option>
+                            <option value="6">السبت</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="w-full py-2.5 rounded-xl border border-gold-500/50 text-gold-300 hover:bg-gold-500/10 text-xs font-bold transition flex items-center justify-center gap-2 mt-2">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>إضافة المهمة</span>
+                    </button>
+                </form>
+            </div>
+
+        </section>
+
+        <!-- Right Column: Weekly Schedule Dashboard (8 Cols) -->
+        <section class="lg:col-span-8 space-y-6">
+
+            <!-- Summary Stats Header -->
+            <div class="card-dark p-5 rounded-2xl grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                <div class="p-3 rounded-xl bg-emerald-950/60 border border-emerald-800/40">
+                    <span class="block text-xs text-emerald-300/70 mb-1">إجمالي المهام</span>
+                    <span id="statTotalTasks" class="text-xl font-extrabold text-gold-400">0</span>
+                </div>
+                <div class="p-3 rounded-xl bg-emerald-950/60 border border-emerald-800/40">
+                    <span class="block text-xs text-emerald-300/70 mb-1">مجموع الصفحات</span>
+                    <span id="statTotalPages" class="text-xl font-extrabold text-gold-400">0</span>
+                </div>
+                <div class="p-3 rounded-xl bg-emerald-950/60 border border-emerald-800/40">
+                    <span class="block text-xs text-emerald-300/70 mb-1">الوقت الإجمالي التقديري</span>
+                    <span id="statTotalHours" class="text-xl font-extrabold text-gold-400">0 س</span>
+                </div>
+                <div class="p-3 rounded-xl bg-emerald-950/60 border border-emerald-800/40">
+                    <span class="block text-xs text-emerald-300/70 mb-1">نسبة الإنجاز الكلية</span>
+                    <span id="statCompletionRate" class="text-xl font-extrabold text-emerald-400">0%</span>
+                </div>
+            </div>
+
+            <!-- Print Header Title (Only visible in Print) -->
+            <div class="hidden print-only text-center mb-6">
+                <h1 class="text-2xl font-bold">جدول الخطة الأسبوعية التفصيلية</h1>
+                <p class="text-sm">تم استخراجه من تطبيق إنجاز — مخطط الإنجاز الأسبوعي</p>
+            </div>
+
+            <!-- Weekly Days Grid -->
+            <div id="weeklyContainer" class="space-y-5">
+                <!-- Dynamic Content Generated by JS -->
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 card-dark px-4 py-3 rounded-xl shadow-2xl border gold-border text-xs text-gold-300 flex items-center gap-3 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none z-50">
+        <i class="fa-solid fa-circle-check text-gold-400 text-sm"></i>
+        <span id="toastMsg">تمت العملية بنجاح</span>
+    </div>
+
+    <!-- Application Engine Script -->
+    <script>
+        // Days Mapping Index
+        const DAYS = [
+            { id: 0, name: 'الأحد', short: 'أحد' },
+            { id: 1, name: 'الاثنين', short: 'اثنين' },
+            { id: 2, name: 'الثلاثاء', short: 'ثلاثاء' },
+            { id: 3, name: 'الأربعاء', short: 'أربعاء' },
+            { id: 4, name: 'الخميس', short: 'خميس' },
+            { id: 5, name: 'الجمعة', short: 'جمعة' },
+            { id: 6, name: 'السبت', short: 'سبت' }
+        ];
+
+        // State Management
+        let tasks = [];
+        let readingPace = 2; // Default 2 minutes per page
+
+        // Load State from LocalStorage
+        function initApp() {
+            const savedTasks = localStorage.getItem('injaz_tasks');
+            const savedPace = localStorage.getItem('injaz_pace');
+
+            if (savedTasks) {
+                try { tasks = JSON.parse(savedTasks); } catch(e) { tasks = []; }
+            }
+            if (savedPace) {
+                readingPace = parseFloat(savedPace) || 2;
+                document.getElementById('readingPace').value = readingPace;
+            }
+
+            renderSchedule();
+        }
+
+        // Save State
+        function saveData() {
+            localStorage.setItem('injaz_tasks', JSON.stringify(tasks));
+            localStorage.setItem('injaz_pace', readingPace.toString());
+        }
+
+        // Update Reading Pace
+        function updatePace(val) {
+            readingPace = parseFloat(val) || 2;
+            saveData();
+            renderSchedule();
+            showToast('تم تحديث معدل سرعة القراءة');
+        }
+
+        // Show Toast Function
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Extract Day Index from Line
+        function detectDayInText(text) {
+            const cleanText = text.trim();
+            for (let day of DAYS) {
+                // Regex matches "الأحد" or "الاثنين" at start or followed by colon/dash
+                const regex = new RegExp(`^(${day.name}|${day.short})[\\s:\\-]`, 'i');
+                if (regex.test(cleanText)) {
+                    return { dayId: day.id, dayName: day.name };
+                }
+            }
+            return null;
+        }
+
+        // Parse Smart Bulk Input
+        function parseAndAddBulk() {
+            const rawText = document.getElementById('bulkInput').value;
+            if (!rawText.trim()) {
+                showToast('يرجى كتابة أو لصق المهام أولاً');
+                return;
+            }
+
+            const lines = rawText.split('\n');
+            let addedCount = 0;
+            let defaultDayIndex = 0;
+
+            lines.forEach(line => {
+                let trimmed = line.trim();
+                if (!trimmed) return;
+
+                // Remove list bullets if present (- or *)
+                trimmed = trimmed.replace(/^[\-\*\•]\s*/, '');
+
+                // Check for day keyword in the line
+                let assignedDay = defaultDayIndex;
+                const detectedDay = detectDayInText(trimmed);
+
+                if (detectedDay) {
+                    assignedDay = detectedDay.dayId;
+                    // Remove the day prefix from the text for clean course title
+                    trimmed = trimmed.replace(new RegExp(`^(${detectedDay.dayName}|${detectedDay.short})[\\s:\\-]*`, 'i'), '');
+                }
+
+                // Regex to extract page ranges: e.g., "من ص 463 إلى ص 474" or "ص 5 - 80" or "463-474"
+                const pageRangeRegex = /(?:من\s*)?(?:ص|صفحة)?\s*(\d+)\s*(?:إلى|-|إلي)\s*(?:ص|صفحة)?\s*(\d+)/i;
+                const match = trimmed.match(pageRangeRegex);
+
+                let courseTitle = trimmed;
+                let startPage = 0;
+                let endPage = 0;
+
+                if (match) {
+                    startPage = parseInt(match[1], 10);
+                    endPage = parseInt(match[2], 10);
+
+                    // Clean the course title by removing the range part
+                    courseTitle = trimmed.replace(match[0], '').replace(/[:\-]$/, '').trim();
+                }
+
+                if (!courseTitle) {
+                    courseTitle = 'مقرر بدون عنوان';
+                }
+
+                // Swap pages if inverted
+                if (startPage > endPage && endPage !== 0) {
+                    const temp = startPage;
+                    startPage = endPage;
+                    endPage = temp;
+                }
+
+                const pageCount = (startPage > 0 && endPage >= startPage) ? (endPage - startPage + 1) : 0;
+
+                // Create Task Object
+                const newTask = {
+                    id: 'task_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+                    title: courseTitle,
+                    startPage: startPage,
+                    endPage: endPage,
+                    pageCount: pageCount,
+                    dueDay: assignedDay,
+                    completed: false
+                };
+
+                tasks.push(newTask);
+                addedCount++;
+            });
+
+            if (addedCount > 0) {
+                saveData();
+                renderSchedule();
+                document.getElementById('bulkInput').value = '';
+                showToast(`تمت إضافة ${addedCount} مهمة بنجاح إلى أماكنها المحددة`);
+            } else {
+                showToast('تعذر تحليل الأسطر. يرجى التثبت من الصيغة');
+            }
+        }
+
+        // Add Single Task Form Handler
+        function handleSingleAdd(e) {
+            e.preventDefault();
+            const title = document.getElementById('singleTitle').value.trim();
+            const startPage = parseInt(document.getElementById('singleStart').value, 10);
+            const endPage = parseInt(document.getElementById('singleEnd').value, 10);
+            const dayId = parseInt(document.getElementById('singleDay').value, 10);
+
+            if (startPage > endPage) {
+                showToast('خطأ: صفحة البداية أكبر من صفحة النهاية');
+                return;
+            }
+
+            const pageCount = endPage - startPage + 1;
+
+            const newTask = {
+                id: 'task_' + Date.now(),
+                title: title,
+                startPage: startPage,
+                endPage: endPage,
+                pageCount: pageCount,
+                dueDay: dayId,
+                completed: false
+            };
+
+            tasks.push(newTask);
+            saveData();
+            renderSchedule();
+
+            // Reset Form
+            document.getElementById('singleTitle').value = '';
+            document.getElementById('singleStart').value = '';
+            document.getElementById('singleEnd').value = '';
+            showToast('تمت إضافة المهمة بنجاح');
+        }
+
+        // Toggle Task Completion
+        function toggleTask(taskId) {
+            const task = tasks.find(t => t.id === taskId);
+            if (task) {
+                task.completed = !task.completed;
+                saveData();
+                renderSchedule();
+            }
+        }
+
+        // Delete Task
+        function deleteTask(taskId) {
+            tasks = tasks.filter(t => t.id !== taskId);
+            saveData();
+            renderSchedule();
+            showToast('تم حذف المهمة');
+        }
+
+        // Render Entire Schedule UI
+        function renderSchedule() {
+            const container = document.getElementById('weeklyContainer');
+            container.innerHTML = '';
+
+            let totalTasks = tasks.length;
+            let totalPages = 0;
+            let completedTasksCount = 0;
+
+            // Iterate over each day (0 to 6)
+            DAYS.forEach(day => {
+                const dayTasks = tasks.filter(t => t.dueDay === day.id);
+                
+                let dayPages = 0;
+                dayTasks.forEach(t => {
+                    dayPages += t.pageCount;
+                    totalPages += t.pageCount;
+                    if (t.completed) completedTasksCount++;
+                });
+
+                const dayMinutes = Math.round(dayPages * readingPace);
+                const dayHoursText = dayMinutes >= 60 
+                    ? `${Math.floor(dayMinutes / 60)} ساعة و ${dayMinutes % 60} دقيقة`
+                    : `${dayMinutes} دقيقة`;
+
+                // Build Card for the Day
+                const dayCard = document.createElement('div');
+                dayCard.className = 'card-dark rounded-2xl p-4 border gold-border relative overflow-hidden';
+
+                let tasksListHTML = '';
+                if (dayTasks.length === 0) {
+                    tasksListHTML = `
+                        <div class="text-center py-6 border border-dashed border-emerald-800/40 rounded-xl">
+                            <p class="text-xs text-emerald-300/40">لا توجد مهام مخصصة لليوم ${day.name}</p>
+                        </div>
+                    `;
+                } else {
+                    tasksListHTML = `<div class="space-y-2.5">`;
+                    dayTasks.forEach(task => {
+                        const estMinutes = Math.round(task.pageCount * readingPace);
+                        tasksListHTML += `
+                            <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-950/80 border border-emerald-800/50 hover:border-gold-500/40 transition group ${task.completed ? 'opacity-60 bg-emerald-950/30' : ''}">
+                                <div class="flex items-center gap-3">
+                                    <button onclick="toggleTask('${task.id}')" class="w-5 h-5 rounded-md border ${task.completed ? 'bg-gold-500 border-gold-500 text-emerald-950' : 'border-emerald-600'} flex items-center justify-center text-xs transition">
+                                        ${task.completed ? '<i class="fa-solid fa-check font-bold"></i>' : ''}
+                                    </button>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-emerald-100 ${task.completed ? 'line-through text-emerald-400/60' : ''}">${escapeHtml(task.title)}</h4>
+                                        <div class="flex items-center gap-3 text-xs text-emerald-300/80 mt-0.5">
+                                            <span><i class="fa-solid fa-book-open text-gold-500/70 ml-1"></i> من ص ${task.startPage} إلى ص ${task.endPage}</span>
+                                            <span class="text-gold-400/90 font-semibold">(${task.pageCount} صفحة)</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-3">
+                                    <span class="text-[11px] text-emerald-300/70 bg-emerald-900/40 px-2 py-1 rounded-md border border-emerald-800/40">${estMinutes} دقيقة</span>
+                                    <button onclick="deleteTask('${task.id}')" class="text-emerald-300/40 hover:text-red-400 opacity-0 group-hover:opacity-100 transition p-1 no-print">
+                                        <i class="fa-solid fa-xmark text-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    tasksListHTML += `</div>`;
+                }
+
+                dayCard.innerHTML = `
+                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-emerald-800/50">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-gold-400"></span>
+                            <h3 class="text-base font-extrabold text-gold-300">${day.name}</h3>
+                            <span class="text-xs text-emerald-300/60 font-normal">(${dayTasks.length} مهام)</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-xs font-semibold">
+                            <span class="text-emerald-200 bg-emerald-900/60 px-2.5 py-1 rounded-lg border border-emerald-700/50">
+                                إجمالي: ${dayPages} صفحة
+                            </span>
+                            <span class="text-gold-300 bg-gold-500/10 px-2.5 py-1 rounded-lg border border-gold-500/20">
+                                <i class="fa-regular fa-clock ml-1"></i>${dayHoursText}
+                            </span>
+                        </div>
+                    </div>
+                    ${tasksListHTML}
+                `;
+
+                container.appendChild(dayCard);
+            });
+
+            // Update Top Global Stats
+            document.getElementById('statTotalTasks').innerText = totalTasks;
+            document.getElementById('statTotalPages').innerText = totalPages;
+            
+            const totalMinutes = Math.round(totalPages * readingPace);
+            const hours = (totalMinutes / 60).toFixed(1);
+            document.getElementById('statTotalHours').innerText = `${hours} ساعة`;
+
+            const completionPercentage = totalTasks > 0 ? Math.round((completedTasksCount / totalTasks) * 100) : 0;
+            document.getElementById('statCompletionRate').innerText = `${completionPercentage}%`;
+        }
+
+        // Helper: Escape HTML
+        function escapeHtml(str) {
+            return str.replace(/[&<>"']/g, function(m) {
+                return {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                }[m];
+            });
+        }
+
+        // Clear All Data
+        function clearAllData() {
+            if (confirm('هل أنت تأكد من رغبتك في مسح كافة المهام الحالية؟')) {
+                tasks = [];
+                saveData();
+                renderSchedule();
+                showToast('تم مسح جميع المهام');
+            }
+        }
+
+        // Export Backup JSON
+        function exportData() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({ tasks, readingPace }));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `injaz_plan_${new Date().toISOString().slice(0,10)}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+            showToast('تم تصدير نسخة احتياطية بنجاح');
+        }
+
+        // Import Backup JSON Trigger
+        function importDataTrigger() {
+            document.getElementById('importFile').click();
+        }
+
+        // Import Process
+        function importData(event) {
+            const fileReader = new FileReader();
+            fileReader.onload = function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (parsed && Array.isArray(parsed.tasks)) {
+                        tasks = parsed.tasks;
+                        if (parsed.readingPace) readingPace = parsed.readingPace;
+                        saveData();
+                        renderSchedule();
+                        showToast('تم استرجاع البيانات بنجاح');
+                    } else {
+                        showToast('الملف غير صالح');
+                    }
+                } catch(err) {
+                    showToast('حدث خطأ أثناء قراءة الملف');
+                }
+            };
+            if (event.target.files[0]) {
+                fileReader.readAsText(event.target.files[0]);
+            }
+        }
+
+        // Initialize on DOM Ready
+        window.onload = function() {
+            initApp();
+        };
+    </script>
+</body>
+</html>
